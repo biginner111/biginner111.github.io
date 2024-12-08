@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/_posts/file_w_r/1.png">
 <meta property="article:published_time" content="2024-12-08T06:00:03.000Z">
-<meta property="article:modified_time" content="2024-12-08T07:24:38.779Z">
+<meta property="article:modified_time" content="2024-12-08T07:27:44.540Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/_posts/file_w_r/1.png">
@@ -265,8 +265,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-08 15:24:38</span>
-            <span class="mobile">2024-12-08 15:24:38</span>
+            <span class="desktop">2024-12-08 15:27:44</span>
+            <span class="mobile">2024-12-08 15:27:44</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -306,22 +306,12 @@
 <p>5.一个进程要进行写入和读取时才在文件上进行加锁，且要满足加锁条件才能进行加锁，不满足的时候根据锁的阻塞类型会进行阻塞等待。</p>
 <p>三、文件锁</p>
 <p>使用函数:fcntl</p>
-<p>#include &lt;fcntl.h&gt;<br>int fcntl(int fd,F_SETLK&#x2F;F_SETLTK,struct flock*lock);</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">fcntl</span><span class="params">(<span class="type">int</span> fd,F_SETLK/F_SETLTK,<span class="keyword">struct</span> flock*lock)</span>;</span><br></pre></td></tr></table></figure></div>
 <p>功能：加解锁。</p>
 <p>输入参数：</p>
 <p>fd：文件描述符</p>
 <p>F_SETLK(以非阻塞方式加锁)&#x2F;F_SETLTK(以阻塞方式加锁)</p>
-<p>struct flock{</p>
-<p>short l_type;&#x2F;&#x2F;锁的类型:F_RDLCK(读锁)、F_WRLCK(写锁)、F_UNLCK(解锁)</p>
-<pre><code>   short l_whence;//偏移的起点:SEEK_SET、SEEK_CUR、SEEK_END 
-
- 	off_t l_start; //锁区偏移，从l_whence
-
-    off_t l_len;  //锁区长度(字节)
-
-    pid_t l_pid; //阻塞我们加锁的进程ID
-</code></pre>
-<p>}</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">flock</span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="type">short</span> l_type;<span class="comment">//锁的类型:F_RDLCK(读锁)、F_WRLCK(写锁)、F_UNLCK(解锁)</span></span><br><span class="line"></span><br><span class="line">	   <span class="type">short</span> l_whence;<span class="comment">//偏移的起点:SEEK_SET、SEEK_CUR、SEEK_END </span></span><br><span class="line"></span><br><span class="line">	 	<span class="type">off_t</span> l_start; <span class="comment">//锁区偏移，从l_whence</span></span><br><span class="line"></span><br><span class="line">		<span class="type">off_t</span> l_len;  <span class="comment">//锁区长度(字节)</span></span><br><span class="line"></span><br><span class="line">		<span class="type">pid_t</span> l_pid; <span class="comment">//阻塞我们加锁的进程ID</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>返回值：成功0,失败-1。</p>
 <p>注意：</p>
 <p>1.同一进程的不同线程之间是起不了文件锁的作用的，只能在进程间其作用；</p>
@@ -347,22 +337,12 @@
                       alt="test"
                 ></p>
 <p>五、文件的元数据</p>
-<p>#include&lt;sys&#x2F;stat.h&gt;<br>int stat(char const <em>path,struct stat</em>buf);<br>int fstat(int fd,struct stat*buf);<br>int lstat();char const <em>path,struct stat</em>buf</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">stat</span><span class="params">(<span class="type">char</span> <span class="type">const</span> *path,<span class="keyword">struct</span> stat*buf)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">fstat</span><span class="params">(<span class="type">int</span> fd,<span class="keyword">struct</span> stat*buf)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">lstat</span><span class="params">()</span>;<span class="type">char</span> <span class="type">const</span> *path,<span class="class"><span class="keyword">struct</span> <span class="title">stat</span>*<span class="title">buf</span></span></span><br></pre></td></tr></table></figure></div>
 <p>功能：从i结点中提取文件元数据内容信息。</p>
 <p>参数： path文件路径</p>
 <p>fd文件描述符</p>
 <p>buf文件元数据信息                                                                                                     返回值：成功0,失败-1                                                                                                        lstat不跟踪符号连接，例如如果a.txt,b.txt建立了符号链接，查看a.txt的元数据就是b.txt的</p>
-<p>struct stat {<br>    dev_t      st_dev;      &#x2F;* 包含文件的设备的 ID <em>&#x2F;<br>    ino_t      st_ino;      &#x2F;</em> Inode 编号 <em>&#x2F;<br>    mode_t     st_mode;     &#x2F;</em> 文件类型和模式 <em>&#x2F;<br>    nlink_t    st_nlink;    &#x2F;</em> 硬链接数 <em>&#x2F;<br>    uid_t      st_uid;      &#x2F;</em> 文件所有者的用户 ID <em>&#x2F;<br>    gid_t      st_gid;      &#x2F;</em> 文件所有者的组 ID <em>&#x2F;<br>    dev_t      st_rdev;     &#x2F;</em> 设备 ID（如果是特殊文件） <em>&#x2F;<br>    off_t      st_size;     &#x2F;</em> 总大小，以字节为单位 <em>&#x2F;<br>    blksize_t  st_blksize;  &#x2F;</em> 文件系统 I&#x2F;O 的块大小 <em>&#x2F;<br>    blkcnt_t   st_blocks;   &#x2F;</em> 分配给文件的 512B 块的数量 *&#x2F;</p>
-<pre><code>struct timespec  st_atim;  /* 最后访问时间 */
-struct timespec  st_mtim;  /* 最后修改时间 */
-struct timespec  st_ctim;  /* 最后状态更改时间 */
-
-#define st_atime  st_atim.tv_sec  /* 向后兼容性 */
-#define st_mtime  st_mtim.tv_sec
-#define st_ctime  st_ctim.tv_sec
-</code></pre>
-<p>};</p>
-<p>mode_t:</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stat</span> &#123;</span></span><br><span class="line">    <span class="type">dev_t</span>      st_dev;      <span class="comment">/* 包含文件的设备的 ID */</span></span><br><span class="line">    <span class="type">ino_t</span>      st_ino;      <span class="comment">/* Inode 编号 */</span></span><br><span class="line">    <span class="type">mode_t</span>     st_mode;     <span class="comment">/* 文件类型和模式 */</span></span><br><span class="line">    <span class="type">nlink_t</span>    st_nlink;    <span class="comment">/* 硬链接数 */</span></span><br><span class="line">    <span class="type">uid_t</span>      st_uid;      <span class="comment">/* 文件所有者的用户 ID */</span></span><br><span class="line">    <span class="type">gid_t</span>      st_gid;      <span class="comment">/* 文件所有者的组 ID */</span></span><br><span class="line">    <span class="type">dev_t</span>      st_rdev;     <span class="comment">/* 设备 ID（如果是特殊文件） */</span></span><br><span class="line">    <span class="type">off_t</span>      st_size;     <span class="comment">/* 总大小，以字节为单位 */</span></span><br><span class="line">    <span class="type">blksize_t</span>  st_blksize;  <span class="comment">/* 文件系统 I/O 的块大小 */</span></span><br><span class="line">    <span class="type">blkcnt_t</span>   st_blocks;   <span class="comment">/* 分配给文件的 512B 块的数量 */</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">timespec</span>  <span class="title">st_atim</span>;</span>  <span class="comment">/* 最后访问时间 */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">timespec</span>  <span class="title">st_mtim</span>;</span>  <span class="comment">/* 最后修改时间 */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">timespec</span>  <span class="title">st_ctim</span>;</span>  <span class="comment">/* 最后状态更改时间 */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> st_atime  st_atim.tv_sec  <span class="comment">/* 向后兼容性 */</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> st_mtime  st_mtim.tv_sec</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> st_ctime  st_ctim.tv_sec</span></span><br><span class="line">&#125;;</span><br><span class="line">                                                                                              </span><br><span class="line"></span><br><span class="line"><span class="type">mode_t</span>:</span><br></pre></td></tr></table></figure></div>
 <p>在32位系统中大小为32位，目前只有后十六位有效。分别代表：</p>
 <p>B15-B12：文件类型</p>
 <p>文件类型有：普通文件，目录文件，本地套接字文件，字符设备，块设备，符号链接，有名管道，掩码</p>
@@ -376,7 +356,7 @@ struct timespec  st_ctim;  /* 最后状态更改时间 */
 <p>一、为什么要进行映射</p>
 <p>1、将一个普通文件映射到内存中，通常在需要对文件进行频繁读写时使用，这样用内存读写取代I&#x2F;O读写，以获得较高的性能；<br>2、将特殊文件进行匿名内存映射，可以为关联进程提供共享内存空间；<br>3、为无关联的进程提供共享内存空间，一般也是将一个普通文件映射到内存中。</p>
 <p>二、对应函数</p>
-<p>#include &lt;sys&#x2F;mman.h&gt;<br>void* mmap(void* start,size_t length,int port,int flags,int fd,off_t offset);&#x2F;&#x2F;建立映射</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"><span class="type">void</span>* <span class="title function_">mmap</span><span class="params">(<span class="type">void</span>* start,<span class="type">size_t</span> length,<span class="type">int</span> port,<span class="type">int</span> flags,<span class="type">int</span> fd,<span class="type">off_t</span> offset)</span>;<span class="comment">//建立映射</span></span><br></pre></td></tr></table></figure></div>
 <p>功能：建立虚拟内存到物理内存或者磁盘的映射。</p>
 <p>输入：</p>
 <p>start：映射到虚拟内存的起始地址，填写NULL自动选择</p>
@@ -396,51 +376,13 @@ struct timespec  st_ctim;  /* 最后状态更改时间 */
 <p>fd:文件描述符</p>
 <p>offset：偏移量，自动按页元整（4096）</p>
 <p>输出：成功返回映射区虚拟内存的起始地址，失败返回MAP_FALID(-1)。</p>
-<p>int munmap(void* start,size_t length);&#x2F;&#x2F;解除映射</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">munmap</span><span class="params">(<span class="type">void</span>* start,<span class="type">size_t</span> length)</span>;<span class="comment">//解除映射</span></span><br></pre></td></tr></table></figure></div>
 <p>功能：解除虚拟内存到物理内存或者是磁盘的映射</p>
 <p>输入：</p>
 <p>start：映射区的开始地址。<br>        length：映射区的长度。</p>
 <p>输出：成功0,失败-1.</p>
 <p>三、实例</p>
-<p>#include &lt;stdio.h&gt;<br>#include &lt;sys&#x2F;mman.h&gt;&#x2F;&#x2F;mmap,munmap<br>#include &lt;fcntl.h&gt;&#x2F;&#x2F;open<br>#include &lt;errno.h&gt;&#x2F;&#x2F;errno<br>#include &lt;sys&#x2F;stat.h&gt;&#x2F;&#x2F;stat,fstat,lstat<br>#include <unistd>&#x2F;&#x2F;close<br>int main(int argc, char *argv[])<br>{<br>    int fd &#x3D; 0;<br>    char *ptr &#x3D; NULL;<br>    struct stat buf &#x3D; {0};</p>
-<pre><code>if (argc &lt; 2)
-&#123;
-    printf(&quot;please enter a file!\n&quot;);
-    return -1;
-&#125;
-
-if ((fd = open(argv[1], O_RDWR)) &lt; 0)
-&#123;
-    printf(&quot;open file error\n&quot;);
-    return -1;
-&#125;
-
-if (fstat(fd, &amp;buf) &lt; 0)
-&#123;
-    printf(&quot;get file state error:%d\n&quot;, errno);
-    close(fd);
-    return -1;
-&#125;
-
-ptr = (char *)mmap(NULL, buf.st_size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
-if (ptr == MAP_FAILED)
-&#123;
-    printf(&quot;mmap failed\n&quot;);
-    close(fd);
-    return -1;
-&#125;
-
-close(fd);
-
-printf(&quot;length of the file is : %d\n&quot;, buf.st_size);
-printf(&quot;the %s content is : %s\n&quot;, argv[1], ptr);
-
-ptr[3] = &#39;a&#39;;
-printf(&quot;the %s new content is : %s\n&quot;, argv[1], ptr);
-munmap(ptr, buf.st_size);
-return 0;
-</code></pre>
-<p>}</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/mman.h&gt;</span><span class="comment">//mmap,munmap</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span><span class="comment">//open</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span><span class="comment">//errno</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span><span class="comment">//stat,fstat,lstat</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd&gt;</span><span class="comment">//close</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fd = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> *ptr = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">buf</span> =</span> &#123;<span class="number">0</span>&#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (argc &lt; <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;please enter a file!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> ((fd = open(argv[<span class="number">1</span>], O_RDWR)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;open file error\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (fstat(fd, &amp;buf) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;get file state error:%d\n&quot;</span>, errno);</span><br><span class="line">        close(fd);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    ptr = (<span class="type">char</span> *)mmap(<span class="literal">NULL</span>, buf.st_size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (ptr == MAP_FAILED)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;mmap failed\n&quot;</span>);</span><br><span class="line">        close(fd);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    close(fd);</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;length of the file is : %d\n&quot;</span>, buf.st_size);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the %s content is : %s\n&quot;</span>, argv[<span class="number">1</span>], ptr);</span><br><span class="line"> </span><br><span class="line">    ptr[<span class="number">3</span>] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the %s new content is : %s\n&quot;</span>, argv[<span class="number">1</span>], ptr);</span><br><span class="line">    munmap(ptr, buf.st_size);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -455,7 +397,7 @@ return 0;
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-12-08 15:24:38
+                    :</strong> 2024-12-08 15:27:44
             </li>
         
         <li>
