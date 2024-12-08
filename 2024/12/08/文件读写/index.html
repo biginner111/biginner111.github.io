@@ -25,12 +25,10 @@
 <meta property="og:site_name" content="lulu">
 <meta property="og:description" content="一、文件的读写与冲突 当多个进程同时对同一个文件进行读取或者写入就会造成文件的内容是不确定的。我们已经知道读取或者写入文件都会改变文件的读取写入位置。 二、避免冲突的方法 我们可以制定一定的规则来解决该问题。                                                                 制定的规则如下： 1.当有进程对文件某区域进行写入操作时，避免">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\%E4%B9%90%E4%B9%90\Desktop\blog\source_posts\%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99\1.png">
 <meta property="article:published_time" content="2024-12-08T06:00:03.000Z">
-<meta property="article:modified_time" content="2024-12-08T06:14:09.320Z">
+<meta property="article:modified_time" content="2024-12-08T06:17:01.702Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\%E4%B9%90%E4%B9%90\Desktop\blog\source_posts\%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99\1.png">
     
     
     <!--- Icon Part-->
@@ -265,8 +263,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-08 14:14:09</span>
-            <span class="mobile">2024-12-08 14:14:09</span>
+            <span class="desktop">2024-12-08 14:17:01</span>
+            <span class="mobile">2024-12-08 14:17:01</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -340,12 +338,8 @@
 <p> v结点：锁表指针，i结点指针，v结点信息。</p>
 <p> 锁表：锁结点链式连接构成。</p>
 <p> 锁结点：类型，偏移，锁区大小，进程pid，下一个结点指针</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\乐乐\Desktop\blog\source_posts\文件读写\1.png"
-                      alt="RUNOOB 1"
-                ></p>
+
+
 <p>五、文件的元数据</p>
 <p>#include&lt;sys&#x2F;stat.h&gt;<br>int stat(char const <em>path,struct stat</em>buf);<br>int fstat(int fd,struct stat*buf);<br>int lstat();char const <em>path,struct stat</em>buf</p>
 <p>功能：从i结点中提取文件元数据内容信息。</p>
@@ -455,7 +449,7 @@ return 0;
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-12-08 14:14:09
+                    :</strong> 2024-12-08 14:17:01
             </li>
         
         <li>
