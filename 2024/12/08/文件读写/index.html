@@ -13,20 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/01/hello-world/"/>
+    <link rel="canonical" href="http://example.com/2024/12/08/文件读写/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+        <meta name="description" content="一、文件的读写与冲突 当多个进程同时对同一个文件进行读取或者写入就会造成文件的内容是不确定的。我们已经知道读取或者写入文件都会改变文件的读取写入位置。 二、避免冲突的方法 我们可以制定一定的规则来解决该问题。                                                                 制定的规则如下： 1.当有进程对文件某区域进行写入操作时，避免">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2024/11/01/hello-world/index.html">
+<meta property="og:title" content="文件读写">
+<meta property="og:url" content="http://example.com/2024/12/08/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/index.html">
 <meta property="og:site_name" content="lulu">
-<meta property="og:description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+<meta property="og:description" content="一、文件的读写与冲突 当多个进程同时对同一个文件进行读取或者写入就会造成文件的内容是不确定的。我们已经知道读取或者写入文件都会改变文件的读取写入位置。 二、避免冲突的方法 我们可以制定一定的规则来解决该问题。                                                                 制定的规则如下： 1.当有进程对文件某区域进行写入操作时，避免">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-01T13:00:48.810Z">
-<meta property="article:modified_time" content="2024-11-01T13:00:48.811Z">
+<meta property="article:published_time" content="2024-12-08T06:00:03.000Z">
+<meta property="article:modified_time" content="2024-12-08T06:00:15.195Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
@@ -40,7 +40,7 @@
     
     <title>
         
-            Hello World | lulu
+            文件读写 | lulu
         
     </title>
 
@@ -235,7 +235,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Hello World</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">文件读写</h1>
                 </div>
             
             </div>
@@ -256,15 +256,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-01 21:48</span>
-        <span class="mobile">2024-11-01 21:48</span>
+        <span class="desktop">2024-12-08 14:03</span>
+        <span class="mobile">2024-12-08 14:03</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-01 21:48</span>
-            <span class="mobile">2024-11-01 21:48</span>
+            <span class="desktop">2024-12-08 14:15</span>
+            <span class="mobile">2024-12-08 14:15</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -291,19 +291,148 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+            <p>一、文件的读写与冲突</p>
+<p>当多个进程同时对同一个文件进行读取或者写入就会造成文件的内容是不确定的。我们已经知道读取或者写入文件都会改变文件的读取写入位置。</p>
+<p>二、避免冲突的方法</p>
+<p>我们可以制定一定的规则来解决该问题。                                                                 制定的规则如下：</p>
+<p>1.当有进程对文件某区域进行写入操作时，避免其他进程对该文件该区域的写入和读取；</p>
+<p>2.当有进程对该文件进行读取时，应该避免其他进程对该文件的写入，但是读取并不影响。</p>
+<p>这个规则叫做文件锁。具体概念为：                                                                                1.将文件锁分为读锁和写锁。</p>
+<p>2.在文件的特定位置只能够添加一把写锁，写完成以后，进行解锁才可以进行下一次的读写操作。</p>
+<p>3.文件的特定位置能够添加多把读锁，添加读锁后不能添加写锁，全部读锁解开以后可以添加。</p>
+<p>4.读写完成以后要进行解锁。</p>
+<p>5.一个进程要进行写入和读取时才在文件上进行加锁，且要满足加锁条件才能进行加锁，不满足的时候根据锁的阻塞类型会进行阻塞等待。</p>
+<p>三、文件锁</p>
+<p>使用函数:fcntl</p>
+<p>#include &lt;fcntl.h&gt;<br>int fcntl(int fd,F_SETLK&#x2F;F_SETLTK,struct flock*lock);</p>
+<p>功能：加解锁。</p>
+<p>输入参数：</p>
+<p>fd：文件描述符</p>
+<p>F_SETLK(以非阻塞方式加锁)&#x2F;F_SETLTK(以阻塞方式加锁)</p>
+<p>struct flock{</p>
+<p>short l_type;&#x2F;&#x2F;锁的类型:F_RDLCK(读锁)、F_WRLCK(写锁)、F_UNLCK(解锁)</p>
+<pre><code>   short l_whence;//偏移的起点:SEEK_SET、SEEK_CUR、SEEK_END 
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+ 	off_t l_start; //锁区偏移，从l_whence
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+    off_t l_len;  //锁区长度(字节)
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+    pid_t l_pid; //阻塞我们加锁的进程ID
+</code></pre>
+<p>}</p>
+<p>返回值：成功0,失败-1。</p>
+<p>注意：</p>
+<p>1.同一进程的不同线程之间是起不了文件锁的作用的，只能在进程间其作用；</p>
+<p>2.当使用close关闭文件时，加在该进程的该文件的锁也解除；</p>
+<p>3.当进程关闭时，该进程中所打开的锁全部结束；</p>
+<p>4.使用fork&#x2F;fork创建的子进程不会继承父进程的文件锁；</p>
+<p>5.当文件的文件描述符没有FD_CLOEXEC时，使用exec创建的子进程会继承父亲的文件锁。</p>
+<p>文件锁其作用的条件为：各个进程对文件进行操作，严格按照先加锁在进行操作，操作完毕，解除文件锁，文件锁才能起到文件锁的作用。如果用户不按照文件锁的使用规则进行操作，文件锁也发挥不了作用。</p>
+<p>四、文件锁的内核结构</p>
+<p>1.系统内核会收集用户所加锁的内容flock组成一张锁表，当加锁时就会去查锁表，当有冲突时就会报错或者阻塞。</p>
+<p>2.系统内核会把锁表起始地址存储在该文件的v结点点中。</p>
+<p>文件描述符表存储文件表项指针，文件表项指针指向文件表项，文件表项存储v结点指针，v结点指针指向v结点，v结点存储锁表的指针锁表指针指向锁表的头。</p>
+<p>存储内容：</p>
+<p> 文件描述符表：文件表项指针，文件描述符为一条条存储在文件描述符表的下标。</p>
+<p> 文件表项:v结点指针，文件读写位置，文件状态标志。</p>
+<p> v结点：锁表指针，i结点指针，v结点信息。</p>
+<p> 锁表：锁结点链式连接构成。</p>
+<p> 锁结点：类型，偏移，锁区大小，进程pid，下一个结点指针</p>
+<p>五、文件的元数据</p>
+<p>#include&lt;sys&#x2F;stat.h&gt;<br>int stat(char const <em>path,struct stat</em>buf);<br>int fstat(int fd,struct stat*buf);<br>int lstat();char const <em>path,struct stat</em>buf</p>
+<p>功能：从i结点中提取文件元数据内容信息。</p>
+<p>参数： path文件路径</p>
+<p>fd文件描述符</p>
+<p>buf文件元数据信息                                                                                                     返回值：成功0,失败-1                                                                                                        lstat不跟踪符号连接，例如如果a.txt,b.txt建立了符号链接，查看a.txt的元数据就是b.txt的</p>
+<p>struct stat {<br>    dev_t      st_dev;      &#x2F;* 包含文件的设备的 ID <em>&#x2F;<br>    ino_t      st_ino;      &#x2F;</em> Inode 编号 <em>&#x2F;<br>    mode_t     st_mode;     &#x2F;</em> 文件类型和模式 <em>&#x2F;<br>    nlink_t    st_nlink;    &#x2F;</em> 硬链接数 <em>&#x2F;<br>    uid_t      st_uid;      &#x2F;</em> 文件所有者的用户 ID <em>&#x2F;<br>    gid_t      st_gid;      &#x2F;</em> 文件所有者的组 ID <em>&#x2F;<br>    dev_t      st_rdev;     &#x2F;</em> 设备 ID（如果是特殊文件） <em>&#x2F;<br>    off_t      st_size;     &#x2F;</em> 总大小，以字节为单位 <em>&#x2F;<br>    blksize_t  st_blksize;  &#x2F;</em> 文件系统 I&#x2F;O 的块大小 <em>&#x2F;<br>    blkcnt_t   st_blocks;   &#x2F;</em> 分配给文件的 512B 块的数量 *&#x2F;</p>
+<pre><code>struct timespec  st_atim;  /* 最后访问时间 */
+struct timespec  st_mtim;  /* 最后修改时间 */
+struct timespec  st_ctim;  /* 最后状态更改时间 */
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+#define st_atime  st_atim.tv_sec  /* 向后兼容性 */
+#define st_mtime  st_mtim.tv_sec
+#define st_ctime  st_ctim.tv_sec
+</code></pre>
+<p>};</p>
+<p>mode_t:</p>
+<p>在32位系统中大小为32位，目前只有后十六位有效。分别代表：</p>
+<p>B15-B12：文件类型</p>
+<p>文件类型有：普通文件，目录文件，本地套接字文件，字符设备，块设备，符号链接，有名管道，掩码</p>
+<p>B11-B9：设置用户id，组id，粘滞位</p>
+<p>B8-B6：拥有者的读写执行</p>
+<p>B5-B3：拥有者组的读写执行</p>
+<p>B2-B0：其他组成员的读写执行</p>
+<p>通过查询到的mode_t和一些宏可以判断文件类型</p>
+<p>S_ISLNK(st_mode):是否是一个连接.<br>S_ISREG是否是一个常规文件.<br>S_ISDIR是否是一个目录<br>S_ISCHR是否是一个字符设备.<br>S_ISBLK是否是一个块设备<br>S_ISFIFO是否是一个FIFO文件.<br>S_ISSOCK是否是一个SOCKET文件. </p>
+<p>六、内存映射文件</p>
+<p>一、为什么要进行映射</p>
+<p>1、将一个普通文件映射到内存中，通常在需要对文件进行频繁读写时使用，这样用内存读写取代I&#x2F;O读写，以获得较高的性能；<br>2、将特殊文件进行匿名内存映射，可以为关联进程提供共享内存空间；<br>3、为无关联的进程提供共享内存空间，一般也是将一个普通文件映射到内存中。</p>
+<p>二、对应函数</p>
+<p>#include &lt;sys&#x2F;mman.h&gt;<br>void* mmap(void* start,size_t length,int port,int flags,int fd,off_t offset);&#x2F;&#x2F;建立映射</p>
+<p>功能：建立虚拟内存到物理内存或者磁盘的映射。</p>
+<p>输入：</p>
+<p>start：映射到虚拟内存的起始地址，填写NULL自动选择</p>
+<p>length：映射区字节大小，自动按页元整</p>
+<p>port：映射区的操作权限</p>
+<p>PORT_READ:映射区可读</p>
+<p>PORT_WRITE：映射区可写</p>
+<p>PORT_EXEC：映射区可执行</p>
+<p>PORT_NONE：映射区不可访问</p>
+<p>flags:</p>
+<p>MAP_FIXED 如果参数start所指的地址无法成功建立映射时，则放弃映射，不对地址做修正</p>
+<p>MAP_SHARED对映射区域的写入数据会复制回文件内。</p>
+<p>MAP_PRIVATE 对映射区域的写入操作只会反映到缓冲区，而不会写入到文件。</p>
+<p>MAP_ANONYMOUS建立匿名映射。此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。</p>
+<p>MAP_DENYWRITE只允许对映射区域的写入操作，其他对文件直接写入的操作将会被拒绝。</p>
+<p>MAP_LOCKED 将映射区域锁定住，这表示该区域不会被置换（swap）。</p>
+<p>fd:文件描述符</p>
+<p>offset：偏移量，自动按页元整（4096）</p>
+<p>输出：成功返回映射区虚拟内存的起始地址，失败返回MAP_FALID(-1)。</p>
+<p>int munmap(void* start,size_t length);&#x2F;&#x2F;解除映射</p>
+<p>功能：解除虚拟内存到物理内存或者是磁盘的映射</p>
+<p>输入：</p>
+<p>start：映射区的开始地址。<br>        length：映射区的长度。</p>
+<p>输出：成功0,失败-1.</p>
+<p>三、实例</p>
+<p>#include &lt;stdio.h&gt;<br>#include &lt;sys&#x2F;mman.h&gt;&#x2F;&#x2F;mmap,munmap<br>#include &lt;fcntl.h&gt;&#x2F;&#x2F;open<br>#include &lt;errno.h&gt;&#x2F;&#x2F;errno<br>#include &lt;sys&#x2F;stat.h&gt;&#x2F;&#x2F;stat,fstat,lstat<br>#include <unistd>&#x2F;&#x2F;close<br>int main(int argc, char *argv[])<br>{<br>    int fd &#x3D; 0;<br>    char *ptr &#x3D; NULL;<br>    struct stat buf &#x3D; {0};</p>
+<pre><code>if (argc &lt; 2)
+&#123;
+    printf(&quot;please enter a file!\n&quot;);
+    return -1;
+&#125;
+
+if ((fd = open(argv[1], O_RDWR)) &lt; 0)
+&#123;
+    printf(&quot;open file error\n&quot;);
+    return -1;
+&#125;
+
+if (fstat(fd, &amp;buf) &lt; 0)
+&#123;
+    printf(&quot;get file state error:%d\n&quot;, errno);
+    close(fd);
+    return -1;
+&#125;
+
+ptr = (char *)mmap(NULL, buf.st_size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+if (ptr == MAP_FAILED)
+&#123;
+    printf(&quot;mmap failed\n&quot;);
+    close(fd);
+    return -1;
+&#125;
+
+close(fd);
+
+printf(&quot;length of the file is : %d\n&quot;, buf.st_size);
+printf(&quot;the %s content is : %s\n&quot;, argv[1], ptr);
+
+ptr[3] = &#39;a&#39;;
+printf(&quot;the %s new content is : %s\n&quot;, argv[1], ptr);
+munmap(ptr, buf.st_size);
+return 0;
+</code></pre>
+<p>}</p>
 
         </div>
 
@@ -311,18 +440,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Hello World</li>
+        <li><strong>标题:</strong> 文件读写</li>
         <li><strong>作者:</strong> lulu的跟班</li>
         <li><strong>创建于
-                :</strong> 2024-11-01 21:00:48</li>
+                :</strong> 2024-12-08 14:00:03</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-01 21:00:48
+                    :</strong> 2024-12-08 14:00:15
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/11/01/hello-world/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/12/08/文件读写/
         </li>
         <li>
             <strong>
@@ -347,21 +476,21 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
                         href="/2024/12/08/assert/"
                         >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
                             <span class="title flex justify-center items-center">
                                 <span class="post-nav-title-item">assert</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         
@@ -418,8 +547,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">目录</div>
-        <div class="page-title">Hello World</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <div class="page-title">文件读写</div>
+        
 
     </div>
 </div>
